@@ -1,0 +1,289 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 30px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+
+header h1 {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header .subtitle {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.time-display {
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 15px;
+}
+
+.digital-clock {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #333;
+  font-family: "Courier New", monospace;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.date-display {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+.alarm-section {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 25px 0;
+}
+
+.time-selector {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 25px 0;
+  flex-wrap: wrap;
+}
+
+.select-group {
+  text-align: center;
+}
+
+.select-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 600;
+}
+
+.time-select {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  min-width: 120px;
+  transition: all 0.3s;
+}
+
+.time-select:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.set-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.stop-btn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+}
+
+.status-section {
+  padding: 20px;
+  background: #fff;
+  border-radius: 15px;
+  margin: 25px 0;
+  border: 2px solid #e9ecef;
+}
+
+.status-box {
+  padding: 20px;
+  background: #e8f5e9;
+  border-radius: 10px;
+  margin: 15px 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.next-alarm {
+  padding: 15px;
+  background: #e3f2fd;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.code-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+}
+
+.code-box {
+  background: #282c34;
+  color: #abb2bf;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 15px 0;
+}
+
+.code-box pre {
+  margin: 0;
+}
+
+.code-box code {
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.note {
+  color: #666;
+  font-style: italic;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  color: #666;
+}
+
+.server-info {
+  background: #e3f2fd;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-family: monospace;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .digital-clock {
+    font-size: 2.5rem;
+  }
+
+  .time-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Animation for alarm */
+@keyframes alarmFlash {
+  0%,
+  100% {
+    background-color: white;
+  }
+  50% {
+    background-color: #ffcccc;
+  }
+}
+
+.alarm-active {
+  animation: alarmFlash 1s infinite;
+}
+/* Add to style.css */
+.alarm-active {
+  animation: alarmFlash 0.5s infinite !important;
+}
+
+@keyframes alarmFlash {
+  0% {
+    background-color: #ffcccc;
+  }
+  50% {
+    background-color: #ff9999;
+  }
+  100% {
+    background-color: #ffcccc;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.alarm-shake {
+  animation: shake 0.5s infinite;
+}

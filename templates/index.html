@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>⏰ Python Alarm Clock</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-clock"></i> Python Alarm Clock</h1>
+        <p class="subtitle">Your Python code running as a web app!</p>
+      </header>
+
+      <!-- Current Time Display -->
+      <div class="time-display">
+        <h2><i class="fas fa-clock"></i> Current Time</h2>
+        <div id="currentTime" class="digital-clock">00:00:00</div>
+        <div id="dateDisplay" class="date-display">-- --- ----</div>
+      </div>
+
+      <!-- Add this in the time-display section -->
+      <div class="timezone-info">
+        <small>
+          <i class="fas fa-globe"></i> Timezone:
+          <span id="timezoneDisplay">Asia/Kolkata (IST)</span>
+        </small>
+      </div>
+
+      <!-- Alarm Setting Section -->
+      <div class="alarm-section">
+        <h2><i class="fas fa-bell"></i> Set New Alarm</h2>
+
+        <div class="time-selector">
+          <div class="select-group">
+            <label for="hours"
+              ><i class="fas fa-hourglass-start"></i> Hour</label
+            >
+            <select id="hours" class="time-select">
+              <option value="">--</option>
+              <!-- Hours will be populated by JavaScript -->
+            </select>
+          </div>
+
+          <div class="select-group">
+            <label for="minutes"
+              ><i class="fas fa-hourglass-end"></i> Minute</label
+            >
+            <select id="minutes" class="time-select">
+              <option value="">--</option>
+              <!-- Minutes will be populated by JavaScript -->
+            </select>
+          </div>
+
+          <div class="select-group">
+            <label for="meridian"><i class="fas fa-sun"></i> AM/PM</label>
+            <select id="meridian" class="time-select">
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button id="setAlarmBtn" class="btn set-btn">
+            <i class="fas fa-bell"></i> Set Alarm
+          </button>
+          <button id="stopAlarmBtn" class="btn stop-btn">
+            <i class="fas fa-stop"></i> Stop Alarm
+          </button>
+        </div>
+      </div>
+
+      <!-- Alarm Status -->
+      <div class="status-section">
+        <h2><i class="fas fa-info-circle"></i> Alarm Status</h2>
+        <div id="alarmStatus" class="status-box">
+          <i class="fas fa-check-circle"></i> No alarm set
+        </div>
+
+        <div id="nextAlarm" class="next-alarm">
+          <strong>Next Alarm:</strong>
+          <span id="alarmTimeDisplay">Not set</span>
+        </div>
+      </div>
+
+      <!-- Python Code Preview -->
+      <div class="code-section">
+        <h2><i class="fas fa-code"></i> Python Code Running in Backend</h2>
+        <div class="code-box">
+          <pre><code>
+# Your Python Alarm Logic
+while alarm_active:
+    current_time = datetime.now().strftime("%H:%M:%S")
+    
+    if alarm_time == current_time:
+        play_alarm_sound()  # Python function
+        print("Wake Up!")
+        
+# Flask API Endpoints
+@app.route('/set_alarm', methods=['POST'])
+def set_alarm():
+    # Handles web requests
+    return jsonify({"status": "success"})
+                </code></pre>
+        </div>
+        <p class="note">
+          <i class="fas fa-lightbulb"></i>
+          This shows the actual Python code running on the server!
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <p>
+          Made with <i class="fas fa-heart" style="color: red"></i> using Flask
+          & Python
+        </p>
+        <p class="server-info">
+          <i class="fas fa-server"></i> Server running on http://localhost:5000
+        </p>
+      </footer>
+    </div>
+
+    <!-- Audio for Alarm -->
+    <audio id="alarmSound" preload="auto">
+      <source
+        src="{{ url_for('static', filename='alarm.mp3') }}"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
